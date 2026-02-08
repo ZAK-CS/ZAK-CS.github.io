@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 14% 4%;
+    --background-secondary: 220 12% 8%;
+    --foreground: 220 20% 97%;
+    --foreground-secondary: 220 10% 68%;
+    --accent: 120 95% 85%;
+    --card: 220 12% 8%;
+    --card-foreground: 220 20% 97%;
+    --popover: 220 12% 8%;
+    --popover-foreground: 220 20% 97%;
+    --primary: 120 95% 85%;
+    --primary-foreground: 220 14% 4%;
+    --secondary: 220 12% 12%;
+    --secondary-foreground: 220 20% 97%;
+    --muted: 220 12% 12%;
+    --muted-foreground: 220 10% 68%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 220 12% 18%;
+    --input: 220 12% 18%;
+    --ring: 120 95% 85%;
+    --radius: 0.375rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: auto;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', sans-serif;
+    background-color: #0B0C10;
+    color: #F4F6FA;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Space Grotesk', sans-serif;
+    letter-spacing: -0.02em;
+    line-height: 0.95;
+  }
+  
+  .font-mono {
+    font-family: 'IBM Plex Mono', monospace;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, #B6FDB6 0%, #8FE58F 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0B0C10;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1d24;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2a2e38;
+}
+
+/* Grain overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Vignette overlay */
+.vignette-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  background: radial-gradient(ellipse at center, transparent 0%, transparent 50%, rgba(0,0,0,0.4) 100%);
+}
+
+/* Accent line animation */
+.accent-line {
+  background-color: #B6FDB6;
+  opacity: 0.45;
+  transform-origin: top;
+}
+
+/* Section base styles */
+.section-pinned {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #0B0C10;
+}
+
+/* Portrait positioning */
+.portrait-desktop {
+  position: absolute;
+  right: 6vw;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 78vh;
+  width: auto;
+  object-fit: cover;
+}
+
+/* Button styles */
+.btn-primary {
+  @apply px-6 py-3 bg-[#B6FDB6] text-[#0B0C10] font-medium rounded-md transition-all duration-300;
+}
+
+.btn-primary:hover {
+  @apply brightness-110 scale-105;
+}
+
+.btn-secondary {
+  @apply px-6 py-3 border border-[#B6FDB6] text-[#B6FDB6] font-medium rounded-md transition-all duration-300;
+}
+
+.btn-secondary:hover {
+  @apply bg-[#B6FDB6]/10;
+}
+
+/* Label style */
+.label-mono {
+  @apply font-mono text-xs uppercase tracking-[0.12em] text-[#B6FDB6];
+}
+
+/* Link style */
+.link-accent {
+  @apply text-[#B6FDB6] hover:underline transition-all duration-300 inline-flex items-center gap-2;
+}

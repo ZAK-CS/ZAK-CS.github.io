@@ -1,0 +1,70 @@
+/* App-specific styles */
+
+/* Ensure smooth scrolling behavior */
+html {
+  scroll-behavior: auto;
+}
+
+/* Prevent horizontal overflow */
+body {
+  overflow-x: hidden;
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(182, 253, 182, 0.3);
+  color: #F4F6FA;
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid #B6FDB6;
+  outline-offset: 2px;
+}
+
+/* Smooth image loading */
+img {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+img[src=""] {
+  opacity: 0;
+}
+
+/* Button hover effects */
+button, a {
+  transition: all 0.3s ease;
+}
+
+/* Card hover lift effect */
+.bg-\[\#14161B\] {
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.bg-\[\#14161B\]:hover {
+  transform: translateY(-2px);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .section-pinned {
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile */
+  }
+  
+  .portrait-desktop {
+    display: none;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
